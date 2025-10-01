@@ -35,6 +35,8 @@ Naruna Vicrantyo Putra Gangga 5027241105
 <img width="97" height="88" alt="Screenshot 2025-10-01 214613" src="https://github.com/user-attachments/assets/7d96c7ef-de4d-424b-ab62-859646f44169" />
 <img width="107" height="89" alt="Screenshot 2025-10-01 214616" src="https://github.com/user-attachments/assets/2cb43c68-b73d-4272-afda-844a17506cc6" />
 <img width="1919" height="1032" alt="Screenshot 2025-10-01 215041" src="https://github.com/user-attachments/assets/f5d7bbad-bb29-4be4-b6ec-c61a4032cfd2" />
+<img width="717" height="390" alt="Screenshot 2025-10-02 001524" src="https://github.com/user-attachments/assets/b11144df-d93b-432c-9edf-51d1fca18abb" />
+<img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/a6cb433b-4f3a-481c-858e-acdb510b2b8b" />
 
 ### 17
 <img width="1919" height="877" alt="Screenshot 2025-10-01 223536" src="https://github.com/user-attachments/assets/fb0d3626-785b-4376-be1a-662e30e90a72" />
