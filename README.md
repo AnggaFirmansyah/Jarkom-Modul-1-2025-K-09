@@ -26,7 +26,6 @@ Naruna Vicrantyo Putra Gangga 5027241105
 
 ### 16
 <img width="956" height="468" alt="Screenshot 2025-10-01 212142" src="https://github.com/user-attachments/assets/0fff07b4-4384-43e6-801f-501163ffe895" />
-
 <img width="1034" height="149" alt="Screenshot 2025-10-01 213723" src="https://github.com/user-attachments/assets/c24dbe58-bd18-41bf-9255-6a4297e1d1e0" />
 <img width="514" height="283" alt="Screenshot 2025-10-01 214154" src="https://github.com/user-attachments/assets/6b3e2702-0c19-46a5-8d52-496dd4dec765" />
 <img width="85" height="85" alt="Screenshot 2025-10-01 214558" src="https://github.com/user-attachments/assets/267c2872-2cb9-4f78-b680-748c11b35766" />
@@ -38,24 +37,30 @@ Naruna Vicrantyo Putra Gangga 5027241105
 <img width="717" height="390" alt="Screenshot 2025-10-02 001524" src="https://github.com/user-attachments/assets/b11144df-d93b-432c-9edf-51d1fca18abb" />
 <img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/a6cb433b-4f3a-481c-858e-acdb510b2b8b" />
 
+<img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/abf8b6d3-390a-4c20-a0b0-3dc93bc75767" />
+
 ### 17
 <img width="1919" height="877" alt="Screenshot 2025-10-01 223536" src="https://github.com/user-attachments/assets/fb0d3626-785b-4376-be1a-662e30e90a72" />
 <img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/1060c6ff-b6ea-4a39-b77d-e505e8ea7232" />
 <img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/bcd3f59a-18ad-421d-ba1f-5793b31b55bd" />
 <img width="862" height="304" alt="Screenshot 2025-10-01 223755" src="https://github.com/user-attachments/assets/1d55e5b6-0386-4016-a537-d08725990daa" />
 
+<img width="815" height="338" alt="Screenshot 2025-10-02 001808" src="https://github.com/user-attachments/assets/1ab5d797-4cdd-4c8a-ab25-c2f8dcd920fa" />
 
 ### 18
 <img width="753" height="254" alt="Screenshot 2025-10-01 230034" src="https://github.com/user-attachments/assets/0a83991f-4ee0-4beb-b907-ab93db0ddc9d" />
 <img width="1919" height="880" alt="Screenshot 2025-10-01 230011" src="https://github.com/user-attachments/assets/3cb247db-9843-4aa2-a1e7-d8ec91436566" />
 <img width="862" height="393" alt="Screenshot 2025-10-01 230950" src="https://github.com/user-attachments/assets/173cbea5-32b2-4295-b353-8a153c3b3181" />
 
+<img width="822" height="569" alt="Screenshot 2025-10-02 002330" src="https://github.com/user-attachments/assets/a56f114c-a278-4b61-9ed6-e68b3154fb8d" />
 
 ### 19
 
 <img width="1919" height="900" alt="Screenshot 2025-10-01 232445" src="https://github.com/user-attachments/assets/494a3eab-1e5d-4e07-9ea7-9a8c1fb61607" />
 <img width="1272" height="877" alt="Screenshot 2025-10-01 232555" src="https://github.com/user-attachments/assets/fcde5de2-762a-4302-bef0-b82feabecf52" />
 <img width="1263" height="778" alt="Screenshot 2025-10-01 232653" src="https://github.com/user-attachments/assets/54313f88-5c4c-4f4b-8e7b-869a74781c6d" />
+
+<img width="842" height="433" alt="Screenshot 2025-10-02 002754" src="https://github.com/user-attachments/assets/8a42fb7b-fc1b-4486-9917-bd963911c8c7" />
 
 ### 20
 
@@ -65,3 +70,5 @@ Naruna Vicrantyo Putra Gangga 5027241105
 <img width="829" height="615" alt="Screenshot 2025-10-01 233951" src="https://github.com/user-attachments/assets/7ebe3a2c-9280-466b-adfd-3bebd286aaf6" />
 <img width="751" height="547" alt="Screenshot 2025-10-01 234349" src="https://github.com/user-attachments/assets/5b72612c-35ac-4fd7-9ec7-1713bdbea8a4" />
 <img width="862" height="471" alt="Screenshot 2025-10-01 234545" src="https://github.com/user-attachments/assets/e61dfcdb-59d1-4038-9871-e6bfaef3567e" />
+
+<img width="830" height="519" alt="Screenshot 2025-10-02 002948" src="https://github.com/user-attachments/assets/4cd61d04-bbb4-45f0-8933-e7bb35575ddb" />
