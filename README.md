@@ -213,6 +213,8 @@ ss -tlnp | grep :80
 
 <img width="1919" height="1027" alt="image" src="https://github.com/user-attachments/assets/610b62b2-4d4e-4a9d-b2f3-9176e6a6d8da" />
 
+<img width="919" height="433" alt="image" src="https://github.com/user-attachments/assets/b278979c-ed9c-40c8-9ac6-52ae98e8f2d2" />
+
 
 ### 16
 
