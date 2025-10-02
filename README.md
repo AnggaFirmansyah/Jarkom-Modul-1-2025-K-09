@@ -7,10 +7,43 @@ Angga Firmansyah 5027241062
 
 Naruna Vicrantyo Putra Gangga 5027241105
 
+### Soal 1
+
+### Topografi 
+
+<img width="683" height="658" alt="image" src="https://github.com/user-attachments/assets/318d7b1e-8ec2-4dbe-aaf2-df77a87c005e" />
+```
+Diatas adalah topografi dari router eru yang berperan sebagai router yang memiliki 2 switch/gateaway
+```
+### Soal 2
+
+<img width="723" height="331" alt="image" src="https://github.com/user-attachments/assets/8294f78d-2f9b-47ba-9e00-50ce9b48448b" />
+
+```
+cat /etc/resolv.conf   //Lihat DNS 
+echo nameserver 192.168.122.1 > /etc/resolv.conf // Masukkan ke dalam config agar dapat akses internet
+ping google.com -c 3 //tes internet
+
+```
+### Soal 3 - 4
+
+```
+Sama seperti Nomor sebelumnya
+```
 
 
+### Soal 5
 
+```
 
+nano /root/.bashrc
+apt update && apt install -y vsftpd
+apt udpadte && apt install -y ftp
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.227.0.0/16
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+```
+### Soal 6
 
 
 
