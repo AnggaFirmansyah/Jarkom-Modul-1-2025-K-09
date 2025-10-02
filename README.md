@@ -45,8 +45,161 @@ echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
 ### Soal 6
 
+```
+nano traffic.sh
+chmod +x traffic.sh
+./traffic.sh
+
+lalu capture di wireshark dengan filter ip.adr == 10.68.1.1
+```
+
+### Soal 7
+
+Install FTP dan VSFTPD sebagai langkah awal
+
+Node Eru : 
+
+Nyalakan server vsftpd lalu buat kedua user : 
+
+<img width="639" height="112" alt="image" src="https://github.com/user-attachments/assets/0691386f-2447-4c76-88a2-13073cc03e19" />
+
+<img width="694" height="171" alt="image" src="https://github.com/user-attachments/assets/5fd76af8-de6a-429f-bab8-86b7029d5cb8" />
+
+Lalu masuk ke direktori tersebut untuk melakukan konfigurasi : 
+
+Tambahkan / pastikan ada:
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+allow_writeable_chroot=YES
+user_sub_token=$USER
+user_config_dir=/etc/vsftpd_user_conf
 
 
+<img width="708" height="233" alt="image" src="https://github.com/user-attachments/assets/2ae89d4f-afb1-4c07-acf4-fe61b77d1667" />
+
+mkdir -p /home/ainur/shared
+chown ainur:ainur /home/ainur/shared
+chmod 755 /home/ainur /home/ainur/shared
+
+
+Dapat ditinjau bahwa user ainur bisa melakukan read & write pada folder shared, serta pada gambar dibawah pada user melkor sama sekali tidak bisa mengakses folder shared dan tidak bisa masuk ke dalam direktori tersebut.
+
+<img width="523" height="277" alt="image" src="https://github.com/user-attachments/assets/923d55b3-e37a-457f-8fe8-6061cd4a19d5" />
+
+### Soal 8
+
+
+Pertama tama login ke FTP Server dengan IP Eru, lalu login dengan user ainur yang telah dibuat pada soal nomor 7 sebelumnya. Lalu gunakan command wget untuk mendownload file tersebut
+
+<img width="698" height="357" alt="image" src="https://github.com/user-attachments/assets/e79cab4a-8d5b-451c-94ee-1a0f1217ae47" />
+
+
+Eru :
+```
+Wget “https://drive.google.com/file/d/11ra_yTV_adsPIXeIPMSt0vrxCBZu0r33/view?usp=drive_link” -O cuaca.zip
+```
+Setelah di downlaod di local, masuk kedalam server dengan ip addres eru dan kredensial ainur.
+
+Gunakan command put untuk download file local ke ftp server.
+
+Hasil WireShark : 
+<img width="710" height="405" alt="image" src="https://github.com/user-attachments/assets/4336aa72-d488-408a-917d-ad7b386ce35f" />
+
+<img width="695" height="363" alt="image" src="https://github.com/user-attachments/assets/ab27578f-0aea-4741-ac19-1d096218ac2b" />
+
+### Soal 9 
+
+Eru
+
+```
+“https://drive.google.com/file/d/11ua2KgBu3MnHEIjhBnzqqv2RMEiJsILY/view?usp=drive_link” -O Kitab_penciptaan.zip
+```
+Reminder : 
+```
+
+mkdir -p /home/ainur/shared
+chown ainur:ainur /home/ainur/shared
+chmod 755 /home/ainur
+chmod 755 /home/ainur/shared
+
+```
+
+<img width="698" height="337" alt="image" src="https://github.com/user-attachments/assets/0a03ee3c-69bd-469c-a732-ba75f5446686" />
+
+Manwe dengan login FTP user ainur :
+
+<img width="713" height="302" alt="image" src="https://github.com/user-attachments/assets/2a664011-79d1-4deb-8789-d9d4c21158b1" />
+
+Command pada node Eru untuk merubah akses read-only : 
+```
+chmod 555 /home/ainur/shared
+chmod 444 /home/ainur/Kitab_Penciptaan.zip
+```
+
+Saat login menggunakan user ainur di node Menwa, tidak dapat login
+
+<img width="703" height="77" alt="image" src="https://github.com/user-attachments/assets/8a243b58-b56d-4d1d-b078-2457b65a4908" />
+
+<img width="703" height="357" alt="image" src="https://github.com/user-attachments/assets/b763c1d1-9b46-4e04-b26e-0c260bf4d407" />
+
+<img width="699" height="365" alt="image" src="https://github.com/user-attachments/assets/76f1331b-3193-4b30-9904-29cc52a6727c" />
+
+### Soal 10
+
+ping -c 100 10.68.1.1
+
+<img width="606" height="449" alt="image" src="https://github.com/user-attachments/assets/f5296b76-638a-4074-b7a7-e89fb32ee232" />
+
+<img width="702" height="365" alt="image" src="https://github.com/user-attachments/assets/6fdf7895-e078-42e9-8ac5-38cac90e18e3" />
+
+
+Dengan 100% packet loss karena tidak ada data yang ter transmisi dengan benar
+
+### Soal 11
+
+Dengan Node melkor, jalankan : 
+```
+apt update
+apt install -y inetutils-telnetd
+
+ss -tlnp | grep :23
+
+which ufw && ufw status verbose || echo "ufw not installed"
+which firewall-cmd && firewall-cmd --state || echo "firewalld not installed"which firewall-cmd && firewall-cmd --state || echo "firewalld not installed"iptables -L -n -v || echo "iptables not available"which nft && nft list ruleset || echo "nft not installed"
+
+
+apt update
+apt install -y ufw
+ufw allow 23/tcp
+apt update
+apt install -y inetutils-telnetd openbsd-inetd
+tcpdump -i any -s 0 -w telnet_capture.pcap port 23
+
+```
+WireShark : 
+
+<img width="700" height="359" alt="image" src="https://github.com/user-attachments/assets/08f87e14-f550-4efa-b230-9e1260f94cb0" />
+
+### Soal 12
+Dengan Node Eru :
+```
+apt update && apt install -y netcat-openbsd
+
+MELKOR=10.68.1.2
+nc -zv $MELKOR 21
+nc -zv $MELKOR 80
+nc -zv $MELKOR 666
+
+
+ss -tlnp | grep :21
+
+apt install -y apache2
+service apache2 start
+
+ss -tlnp | grep :80
+
+```
 ### 14
 <img width="1919" height="1030" alt="Screenshot 2025-10-01 141200" src="https://github.com/user-attachments/assets/4a778263-5cb8-421c-96ad-87970fb12ed0" />
 
