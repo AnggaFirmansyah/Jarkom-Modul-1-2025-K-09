@@ -211,6 +211,9 @@ ss -tlnp | grep :80
 
 <img width="956" height="468" alt="Screenshot 2025-10-01 212142" src="https://github.com/user-attachments/assets/0fff07b4-4384-43e6-801f-501163ffe895" />
 
+<img width="1919" height="1027" alt="image" src="https://github.com/user-attachments/assets/610b62b2-4d4e-4a9d-b2f3-9176e6a6d8da" />
+
+
 ### 16
 
 <img width="1034" height="149" alt="Screenshot 2025-10-01 213723" src="https://github.com/user-attachments/assets/c24dbe58-bd18-41bf-9255-6a4297e1d1e0" />
