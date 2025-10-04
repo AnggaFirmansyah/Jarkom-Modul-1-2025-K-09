@@ -200,38 +200,156 @@ service apache2 start
 ss -tlnp | grep :80
 
 ```
-### 14
+## Soal 14
+
+### Setelah gagal mengakses FTP, Melkor melancarkan serangan brute force terhadap  Manwe. Analisis file capture yang disediakan dan identifikasi upaya brute force Melkor. (link file) nc 10.15.43.32 3401
+
+Berdasarkan soal, kami disini disuruh untuk melihat file yang disediakan menggunakan wireshark. Lalu setelah dibuka bisa dilihat gambar dibawah, dibagian kanan bawah itu terdapat 500318 packet yang ada.
 <img width="1919" height="1030" alt="Screenshot 2025-10-01 141200" src="https://github.com/user-attachments/assets/4a778263-5cb8-421c-96ad-87970fb12ed0" />
 
+Setelah itu kita diminta untuk mencari data dari user yang berhasil login menggunakan brute force. Karena user menggunakan brute force, disini saya mencari dari packet paling bawah dan mengecek satu-satu packet karena biasanya yang paling bawah itu adalah packet yang berhasil login. Bisa dilihat digambar kalau saya menemukan packet yang berisikan informasi user pada packet 41824.
 <img width="827" height="361" alt="Screenshot 2025-10-01 143108" src="https://github.com/user-attachments/assets/f1ae02c9-d0fa-4f33-93ef-af1cfe8b4763" />
 
+### Berikut adalah flag dari soal 14
 <img width="846" height="445" alt="Screenshot 2025-10-01 144514" src="https://github.com/user-attachments/assets/509f7123-5ee3-4d6d-a366-aaeff71e607b" />
 
-### 15
+## Soal 15
 
+### Melkor menyusup ke ruang server dan memasang keyboard USB berbahaya pada node Manwe. Buka file capture dan identifikasi pesan atau ketikan (keystrokes) yang berhasil dicuri oleh Melkor untuk menemukan password rahasia. (link file) nc 10.15.43.32 3402
+
+Disini untuk menemukan device apa yang digunakan, saya mengecek packet dari yang paling atas satu per satu. Lalu di packet nomor 16 itu dibagian string decriptor tertulis bahwa device yang digunakan adalah USB Keyboard
 <img width="956" height="468" alt="Screenshot 2025-10-01 212142" src="https://github.com/user-attachments/assets/0fff07b4-4384-43e6-801f-501163ffe895" />
+
+Selanjutnya kita disuruh untuk mencari apa yang ditulis Melkor di wireshark tersebut. Disini saya menggunakan skrip python3 untuk nge-decode hid ke ascii. Untuk skripnya sebagai berikut:
+```python
+import sys
+
+HID_TO_ASCII = {
+    0x04: 'a', 0x05: 'b', 0x06: 'c', 0x07: 'd', 0x08: 'e', 0x09: 'f', 0x0A: 'g',
+    0x0B: 'h', 0x0C: 'i', 0x0D: 'j', 0x0E: 'k', 0x0F: 'l', 0x10: 'm', 0x11: 'n',
+    0x12: 'o', 0x13: 'p', 0x14: 'q', 0x15: 'r', 0x16: 's', 0x17: 't', 0x18: 'u',
+    0x19: 'v', 0x1A: 'w', 0x1B: 'x', 0x1C: 'y', 0x1D: 'z',
+    0x1E: '1', 0x1F: '2', 0x20: '3', 0x21: '4', 0x22: '5', 0x23: '6', 0x24: '7',
+    0x25: '8', 0x26: '9', 0x27: '0',
+    0x28: '\n', 0x29: '[ESC]', 0x2A: '[BACKSPACE]', 0x2B: '\t', 0x2C: ' ',
+    0x2D: '-', 0x2E: '=', 0x2F: '[', 0x30: ']', 0x31: '\\', 0x33: ';', 0x34: '\'',
+    0x35: '`', 0x36: ',', 0x37: '.', 0x38: '/',
+    0x59: '1', 0x5A: '2', 0x5B: '3', 0x5C: '4', 0x5D: '5', 0x5E: '6', 0x5F: '7',
+    0x60: '8', 0x61: '9', 0x62: '0',
+}
+
+SHIFT_HID_TO_ASCII = {
+    0x04: 'A', 0x05: 'B', 0x06: 'C', 0x07: 'D', 0x08: 'E', 0x09: 'F', 0x0A: 'G',
+    0x0B: 'H', 0x0C: 'I', 0x0D: 'J', 0x0E: 'K', 0x0F: 'L', 0x10: 'M', 0x11: 'N',
+    0x12: 'O', 0x13: 'P', 0x14: 'Q', 0x15: 'R', 0x16: 'S', 0x17: 'T', 0x18: 'U',
+    0x19: 'V', 0x1A: 'W', 0x1B: 'X', 0x1C: 'Y', 0x1D: 'Z',
+    0x1E: '!', 0x1F: '@', 0x20: '#', 0x21: '$', 0x22: '%', 0x23: '^', 0x24: '&',
+    0x25: '*', 0x26: '(', 0x27: ')',
+    0x2D: '_', 0x2E: '+', 0x2F: '{', 0x30: '}', 0x31: '|', 0x33: ':', 0x34: '"',
+    0x35: '~', 0x36: '<', 0x37: '>', 0x38: '?',
+}
+
+def decrypt_hid_data(hid_codes):
+    result = ""
+    for report in hid_codes:
+        if len(report) < 3:
+            continue
+        modifier_byte = report[0]
+        keycode = report[2]
+        is_shift_pressed = (modifier_byte & 2) or (modifier_byte & 32)
+        char = ''
+        if keycode == 0:
+            continue
+        if is_shift_pressed:
+            char = SHIFT_HID_TO_ASCII.get(keycode, HID_TO_ASCII.get(keycode, ''))
+        else:
+            char = HID_TO_ASCII.get(keycode, '')
+        result += char
+    return result
+
+def parse_hid_data_from_log(file_content):
+    hid_codes = []
+    for line in file_content.splitlines():
+        if 'HID Data:' in line:
+            hex_str = line.split(':')[-1].strip()
+            
+            try:
+                byte_list = [int(hex_str[i:i+2], 16) for i in range(0, len(hex_str), 2)]
+                hid_codes.append(byte_list)
+            except (ValueError, IndexError):
+                continue
+    return hid_codes
+
+def main():
+    if len(sys.argv) < 2:
+        print("Error: Mohon sertakan nama file input.")
+        print("Contoh: python3 hid_decoder.py namafile.txt")
+        return
+
+    input_filename = sys.argv[1]
+    
+    try:
+        with open(input_filename, 'r') as f:
+            log_content = f.read()
+    except FileNotFoundError:
+        print(f"Error: File '{input_filename}' tidak ditemukan.")
+        return
+
+    hid_data_list = parse_hid_data_from_log(log_content)
+    
+    decoded_text = decrypt_hid_data(hid_data_list)
+    print(decoded_text, end='')
+
+if __name__ == "__main__":
+    main()
+```
+
+### Cara menjalankan skrip
+```
+python3 hid_decoder.py plaintext.txt > decoded.txt
+```
+
+Setelah menggunakan skrip tersebut, maka kita menemukan apa yang kita cari, yaitu `UGx6X3ByMHYxZGVfeTB1cl91czNybjRtZV80bmRfcDRzc3cwcmQ=`
+
+Selanjutnya kita menggunakan decoder base64 online untuk nge-decode pesan tadi agar mendapatkan flag nomor 15
 
 <img width="1919" height="1027" alt="image" src="https://github.com/user-attachments/assets/610b62b2-4d4e-4a9d-b2f3-9176e6a6d8da" />
 
+### Berikut adalah flag dari soal 15
 <img width="919" height="433" alt="image" src="https://github.com/user-attachments/assets/b278979c-ed9c-40c8-9ac6-52ae98e8f2d2" />
 
 
-### 16
+## Soal 16
+
+### Melkor semakin murka ia meletakkan file berbahaya di server milik Manwe. Dari file capture yang ada, identifikasi file apa yang diletakkan oleh Melkor. (link file) nc 10.15.43.32 3403
+
+Untuk mencari kredensial apa yang digunakan penyerang untuk log in kita bisa lihat dari yang paling bawah karena urutan packet berdasarkan waktu. Disini saya membuka packet yang berwarna merah dengan keterangan RST (Reset) dan ACK (Acknowledge). Didalamnya terdapat informasi yang kita cari 
 
 <img width="1034" height="149" alt="Screenshot 2025-10-01 213723" src="https://github.com/user-attachments/assets/c24dbe58-bd18-41bf-9255-6a4297e1d1e0" />
 <img width="514" height="283" alt="Screenshot 2025-10-01 214154" src="https://github.com/user-attachments/assets/6b3e2702-0c19-46a5-8d52-496dd4dec765" />
+
+Dibawahnya juga terdapat beberapa file .exe yang mencurigakan yaitu `q.exe w.exe e.exe r.exe t.exe`
+
 <img width="85" height="85" alt="Screenshot 2025-10-01 214558" src="https://github.com/user-attachments/assets/267c2872-2cb9-4f78-b680-748c11b35766" />
 <img width="99" height="86" alt="Screenshot 2025-10-01 214603" src="https://github.com/user-attachments/assets/e1def2a4-f154-44b9-b0f5-a76a2544025c" />
 <img width="107" height="87" alt="Screenshot 2025-10-01 214607" src="https://github.com/user-attachments/assets/43d3388f-6d26-4310-9d0b-06f59ebc100a" />
 <img width="97" height="88" alt="Screenshot 2025-10-01 214613" src="https://github.com/user-attachments/assets/7d96c7ef-de4d-424b-ab62-859646f44169" />
 <img width="107" height="89" alt="Screenshot 2025-10-01 214616" src="https://github.com/user-attachments/assets/2cb43c68-b73d-4272-afda-844a17506cc6" />
+
+Selanjutnya untuk mendapatkan hash dari file .exe tersebut kita harus memilih packet yang terdapat size .exe didalam keterangan packet. `misal SIZE q.exe`
+Disini saya memilih acak packetnya karena isinya sama saja asal ada keterangan size .exe yang kita cari.
+
 <img width="1919" height="1032" alt="Screenshot 2025-10-01 215041" src="https://github.com/user-attachments/assets/f5d7bbad-bb29-4be4-b6ec-c61a4032cfd2" />
+
+Setelah kita save secara raw packet yang terdapat .exe, kita gunakan cmd sha256sum di bash untuk decrypt isi dari file tadi.
+
 <img width="717" height="390" alt="Screenshot 2025-10-02 001524" src="https://github.com/user-attachments/assets/b11144df-d93b-432c-9edf-51d1fca18abb" />
+
+### Berikut adalah flag dari soal 16
+
 <img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/a6cb433b-4f3a-481c-858e-acdb510b2b8b" />
 
-<img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/abf8b6d3-390a-4c20-a0b0-3dc93bc75767" />
-
-### 17
+## Soal 17
 <img width="1919" height="877" alt="Screenshot 2025-10-01 223536" src="https://github.com/user-attachments/assets/fb0d3626-785b-4376-be1a-662e30e90a72" />
 <img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/1060c6ff-b6ea-4a39-b77d-e505e8ea7232" />
 <img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/bcd3f59a-18ad-421d-ba1f-5793b31b55bd" />
@@ -239,14 +357,14 @@ ss -tlnp | grep :80
 
 <img width="815" height="338" alt="Screenshot 2025-10-02 001808" src="https://github.com/user-attachments/assets/1ab5d797-4cdd-4c8a-ab25-c2f8dcd920fa" />
 
-### 18
+## Soal 18
 <img width="753" height="254" alt="Screenshot 2025-10-01 230034" src="https://github.com/user-attachments/assets/0a83991f-4ee0-4beb-b907-ab93db0ddc9d" />
 <img width="1919" height="880" alt="Screenshot 2025-10-01 230011" src="https://github.com/user-attachments/assets/3cb247db-9843-4aa2-a1e7-d8ec91436566" />
 <img width="862" height="393" alt="Screenshot 2025-10-01 230950" src="https://github.com/user-attachments/assets/173cbea5-32b2-4295-b353-8a153c3b3181" />
 
 <img width="822" height="569" alt="Screenshot 2025-10-02 002330" src="https://github.com/user-attachments/assets/a56f114c-a278-4b61-9ed6-e68b3154fb8d" />
 
-### 19
+## Soal 19
 
 <img width="1919" height="900" alt="Screenshot 2025-10-01 232445" src="https://github.com/user-attachments/assets/494a3eab-1e5d-4e07-9ea7-9a8c1fb61607" />
 <img width="1272" height="877" alt="Screenshot 2025-10-01 232555" src="https://github.com/user-attachments/assets/fcde5de2-762a-4302-bef0-b82feabecf52" />
@@ -254,7 +372,7 @@ ss -tlnp | grep :80
 
 <img width="842" height="433" alt="Screenshot 2025-10-02 002754" src="https://github.com/user-attachments/assets/8a42fb7b-fc1b-4486-9917-bd963911c8c7" />
 
-### 20
+## Soal 20
 
 <img width="1911" height="888" alt="Screenshot 2025-10-01 233411" src="https://github.com/user-attachments/assets/f47bda10-1ba1-4e9b-a8e0-294786d4f255" />
 <img width="1916" height="887" alt="Screenshot 2025-10-01 233432" src="https://github.com/user-attachments/assets/86921830-a647-4e7b-92a6-bbad597caaaa" />
