@@ -535,6 +535,7 @@ service ssh start
 
 Varda :
 ```
-root@10.68.1.1
+ssh eru@10.68.1.1
 masukan password
 ```
+Saat di wireshark dapat terlihat paket yang ter enkripsi
