@@ -104,7 +104,11 @@ Setelah di downlaod di local, masuk kedalam server dengan ip addres eru dan kred
 Gunakan command put untuk download file local ke ftp server.
 
 Hasil WireShark : 
+
+
+
 <img width="710" height="405" alt="image" src="https://github.com/user-attachments/assets/4336aa72-d488-408a-917d-ad7b386ce35f" />
+
 
 <img width="695" height="363" alt="image" src="https://github.com/user-attachments/assets/ab27578f-0aea-4741-ac19-1d096218ac2b" />
 
