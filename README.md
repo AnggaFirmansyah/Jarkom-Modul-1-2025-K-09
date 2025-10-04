@@ -350,35 +350,81 @@ Setelah kita save secara raw packet yang terdapat .exe, kita gunakan cmd sha256s
 <img width="896" height="626" alt="Screenshot 2025-10-02 001615" src="https://github.com/user-attachments/assets/a6cb433b-4f3a-481c-858e-acdb510b2b8b" />
 
 ## Soal 17
+
+### Manwe membuat halaman web di node-nya yang menampilkan gambar cincin agung. Melkor yang melihat web tersebut merasa iri sehingga ia meletakkan file berbahaya agar web tersebut dapat dianggap menyebarkan malware oleh Eru. Analisis file capture untuk menggagalkan rencana Melkor dan menyelamatkan web Manwe. (link file) nc 10.15.43.32 3404
+
+Untuk mencari file yang mencurigakan disini saya membuka `file → export objects → http`. Disana terdapat 3 file, saya mencoba memasukkan nama dari masing-masing file pada soal hingga berhasil. Bisa disimpulkan bahwa file mencurigakan pertama adalah `Invoice&MSO-Request.doc` dan yang kedua adalah `knr.exe`
+
 <img width="1919" height="877" alt="Screenshot 2025-10-01 223536" src="https://github.com/user-attachments/assets/fb0d3626-785b-4376-be1a-662e30e90a72" />
-<img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/1060c6ff-b6ea-4a39-b77d-e505e8ea7232" />
 <img width="752" height="302" alt="Screenshot 2025-10-01 223551" src="https://github.com/user-attachments/assets/bcd3f59a-18ad-421d-ba1f-5793b31b55bd" />
+
+Dan untuk mendapatkan hash dari `knr.exe` itu caranya sama seperti soal sebelumnya. Kita save lalu decrypt menggunakan sha256sum.
+
 <img width="862" height="304" alt="Screenshot 2025-10-01 223755" src="https://github.com/user-attachments/assets/1d55e5b6-0386-4016-a537-d08725990daa" />
+
+### Berikut adalah flag dari soal 17
 
 <img width="815" height="338" alt="Screenshot 2025-10-02 001808" src="https://github.com/user-attachments/assets/1ab5d797-4cdd-4c8a-ab25-c2f8dcd920fa" />
 
 ## Soal 18
-<img width="753" height="254" alt="Screenshot 2025-10-01 230034" src="https://github.com/user-attachments/assets/0a83991f-4ee0-4beb-b907-ab93db0ddc9d" />
+
+### Karena rencana Melkor yang terus gagal, ia akhirnya berhenti sejenak untuk berpikir. Pada saat berpikir ia akhirnya memutuskan untuk membuat rencana jahat lainnya dengan meletakkan file berbahaya lagi tetapi dengan metode yang berbeda. Gagalkan lagi rencana Melkor dengan mengidentifikasi file capture yang disediakan agar dunia tetap aman. (link file) nc 10.15.43.32 3405
+
+Untuk soal 18 ini metodenya hampir sama seperti soal 17, namun di export objects kita pilih smb. Disini terdapat 2 file .exe yang mencurigakan.
+
 <img width="1919" height="880" alt="Screenshot 2025-10-01 230011" src="https://github.com/user-attachments/assets/3cb247db-9843-4aa2-a1e7-d8ec91436566" />
+<img width="753" height="254" alt="Screenshot 2025-10-01 230034" src="https://github.com/user-attachments/assets/0a83991f-4ee0-4beb-b907-ab93db0ddc9d" />
+
+Dan untuk mendapatkan hash itu juga metodenya sama seperti sebelumnya.
+
 <img width="862" height="393" alt="Screenshot 2025-10-01 230950" src="https://github.com/user-attachments/assets/173cbea5-32b2-4295-b353-8a153c3b3181" />
+
+### Berikut adalah flag dari soal 18
 
 <img width="822" height="569" alt="Screenshot 2025-10-02 002330" src="https://github.com/user-attachments/assets/a56f114c-a278-4b61-9ed6-e68b3154fb8d" />
 
 ## Soal 19
 
+### Manwe mengirimkan email berisi surat cinta kepada Varda melalui koneksi yang tidak terenkripsi. Melihat hal itu Melkor sipaling jahat langsung melancarkan aksinya yaitu meneror Varda dengan email yang disamarkan. Analisis file capture jaringan dan gagalkan lagi rencana busuk Melkor. (link file) nc 10.15.43.32 3406
+
+Untuk soal 19 ini cukup singkat, kita membuka packet yang ada keterangan `Mail From`. Disini saya ngecek dari yang paling atas dan kebetulan isinya sama dengan apa yang kita cari.
+
 <img width="1919" height="900" alt="Screenshot 2025-10-01 232445" src="https://github.com/user-attachments/assets/494a3eab-1e5d-4e07-9ea7-9a8c1fb61607" />
 <img width="1272" height="877" alt="Screenshot 2025-10-01 232555" src="https://github.com/user-attachments/assets/fcde5de2-762a-4302-bef0-b82feabecf52" />
 <img width="1263" height="778" alt="Screenshot 2025-10-01 232653" src="https://github.com/user-attachments/assets/54313f88-5c4c-4f4b-8e7b-869a74781c6d" />
+
+### Berikut adalah flag dari soal 19
 
 <img width="842" height="433" alt="Screenshot 2025-10-02 002754" src="https://github.com/user-attachments/assets/8a42fb7b-fc1b-4486-9917-bd963911c8c7" />
 
 ## Soal 20
 
+### Untuk yang terakhir kalinya, rencana besar Melkor yaitu menanamkan sebuah file berbahaya kemudian menyembunyikannya agar tidak terlihat oleh Eru. Tetapi Manwe yang sudah merasakan adanya niat jahat dari Melkor, ia menyisipkan bantuan untuk mengungkapkan rencana Melkor. Analisis file capture dan identifikasi kegunaan bantuan yang diberikan oleh Manwe untuk menggagalkan rencana jahat Melkor selamanya. (link file) nc 10.15.43.32 3407
+
+Pada soal 20, lalu lintas data tidak lagi ditransmisikan dalam bentuk teks biasa seperti sebelumnya. Seluruh komunikasi berjalan melalui protokol terenkripsi, sehingga kontennya tidak bisa langsung dibaca. Berdasarkan penggunaan 	port tertentu dan payload yang tampak teracak, dapat disimpulkan bahwa teknik enkripsi yang digunakan adalah TLS.
+
 <img width="1911" height="888" alt="Screenshot 2025-10-01 233411" src="https://github.com/user-attachments/assets/f47bda10-1ba1-4e9b-a8e0-294786d4f255" />
+
+Selanjutnya untuk mencari file yang ditaruh penyerang, kita ke `file → export objects → http`.
+
 <img width="1916" height="887" alt="Screenshot 2025-10-01 233432" src="https://github.com/user-attachments/assets/86921830-a647-4e7b-92a6-bbad597caaaa" />
+
+Tetapi isinya kosong, itu dikarenakan kita belum memasukkan keylog pada TLS di Wireshark yang kita pakai.
+
 <img width="749" height="544" alt="Screenshot 2025-10-01 233446" src="https://github.com/user-attachments/assets/fd34edd7-4c88-40aa-901c-03243c8565f4" />
+
+Disini kita ke `edit → preferences → protocol → TLS` untuk memberi keylog.
+
 <img width="829" height="615" alt="Screenshot 2025-10-01 233951" src="https://github.com/user-attachments/assets/7ebe3a2c-9280-466b-adfd-3bebd286aaf6" />
+
+Setelah itu balik lagi ke http. Terdapat beberapa file mencurigakan dan yang mencurigakan adalah `invest_20.dll`
+
 <img width="751" height="547" alt="Screenshot 2025-10-01 234349" src="https://github.com/user-attachments/assets/5b72612c-35ac-4fd7-9ec7-1713bdbea8a4" />
+
+Sama seperti sebelumnya, untuk mendapatkan hash dari `invest_20.dll` kita save filenya lalu decrypt menggunakan sha256sum.
+
 <img width="862" height="471" alt="Screenshot 2025-10-01 234545" src="https://github.com/user-attachments/assets/e61dfcdb-59d1-4038-9871-e6bfaef3567e" />
+
+### Berikut adalah flag dari soal 20
 
 <img width="830" height="519" alt="Screenshot 2025-10-02 002948" src="https://github.com/user-attachments/assets/4cd61d04-bbb4-45f0-8933-e7bb35575ddb" />
