@@ -1,11 +1,10 @@
-# Jarkom-Modul-1-2025-K-09
+# Laporan Praktikum Komunikasi Data & Jaringan Komputer – Modul 1
 
 ## Anggota Kelompok
-
-Angga Firmansyah 5027241062
-
-
-Naruna Vicrantyo Putra Gangga 5027241105
+| Nama | NRP |
+|------|------|
+| Angga Firmansyah | 5027241062 |
+| Naruna Vicrantyo Putra Gangga | 5027241105 |
 
 ### Soal 1
 
