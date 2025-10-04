@@ -494,3 +494,47 @@ login dengan eru dan passwordnya
 
 ### SOAL 12
 
+<img width="724" height="135" alt="image" src="https://github.com/user-attachments/assets/0da09edd-dd69-417f-a47a-4d44039a2dea" />
+
+Commands :
+
+Eru
+```
+apt update && apt install -y netcat-openbsd
+
+nc -zv 10.68.1.2 21
+nc -zv 10.68.1.2 80
+nc -zv 10.68.1.2 666
+
+```
+<img width="560" height="50" alt="image" src="https://github.com/user-attachments/assets/57add223-b1f1-4de2-a91f-49fa227c4b4a" />
+
+Berubah saat menggunakan command pada melkor :
+```
+service vsftpd start
+```
+
+Lalu kembali ke node eru dan menggunakan command
+```
+nc -zv 10.68.1.2 80
+```
+
+### Soal 13    
+
+<img width="725" height="134" alt="image" src="https://github.com/user-attachments/assets/3977f2de-ea43-4fc1-a6f8-35f9d5b5bf67" />
+
+
+<img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/f04536aa-6ffb-419a-8886-34c252338d94" />
+
+Penjelasan : Saat capture dengan wireshark dengan filter SSH di node Varda dan Eru, lalu follow stream 
+
+Eru : 
+```
+service ssh start
+```
+
+Varda :
+```
+root@10.68.1.1
+masukan password
+```
