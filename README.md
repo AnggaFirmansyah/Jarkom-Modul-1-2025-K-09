@@ -428,3 +428,69 @@ Sama seperti sebelumnya, untuk mendapatkan hash dari `invest_20.dll` kita save f
 ### Berikut adalah flag dari soal 20
 
 <img width="830" height="519" alt="Screenshot 2025-10-02 002948" src="https://github.com/user-attachments/assets/4cd61d04-bbb4-45f0-8933-e7bb35575ddb" />
+
+### REVISI
+
+### Soal 9
+
+<img width="1623" height="820" alt="image" src="https://github.com/user-attachments/assets/25fbbe0f-c83b-4cc4-90f1-1a27a04df7bc" />
+
+Commands : 
+
+```
+wget -O /root/Kitab_Penciptaan.zip "https://drive.google.com/uc?export=download&id=11ua2KgBu3MnHEIjhBnzqqv2RMEiJsILY"
+
+cp /root/Kitab_Penciptaan.zip /home/ainur/shared/
+chown ainur:ainur /home/ainur/shared/Kitab_Penciptaan.zip
+chmod 644 /home/ainur/shared/Kitab_Penciptaan.zip
+
+```
+Lalu login dengan FTP di node Eru dan gunakan command :
+```
+ftp> cd Shared
+ftp> get Kitab_Penciptaan.zip
+```
+
+### Soal 11
+
+
+
+<img width="1919" height="1021" alt="image" src="https://github.com/user-attachments/assets/8efaf1f3-fcf2-4bf0-9f7d-9918857dae23" />
+
+
+
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/2e5ff806-8ba5-42ad-9f65-891abb436287" />
+
+Commands :
+
+melkor
+```
+service openbsd-inetd start
+
+nano /etc/inetd.conf
+telnet  stream  tcp  nowait  root  /usr/sbin/tcpd  /usr/sbin/in.telnetd
+
+service openbsd-inetd restart
+
+netstat -tlnp | grep :23
+
+adduser eru
+passowrd 123
+
+```
+Capture dengan wireshark antara node eru dan melkor
+
+eru
+
+```
+service openbsd-inetd start
+
+telnet 10.68.1.2
+
+login dengan eru dan passwordnya
+
+```
+
+
+### SOAL 12
+
